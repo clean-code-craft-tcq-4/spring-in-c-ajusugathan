@@ -11,7 +11,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     set.max = 0;
     int index_count=0;
     float sum=0.0;
-    if(setlength!=0)
+    if((numberset!=nullptr)&&(setlength!=0))
     {
         set.min = numberset[0];
 	for (;index_count<setlength;index_count++)
@@ -27,6 +27,10 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 	     sum+=numberset[index_count];
 	}
 	set.average=(sum/setlength);
+   }
+   else
+   {
+	set.average=NAN;
    }
    return set;
 }
