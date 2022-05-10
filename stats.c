@@ -8,9 +8,9 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     int index_count=0,sort_count=0;
     float sum=0,temp_number=0;
     /*sorting the array*/
-    for (index_count=0;index_count<length;index_count++)
+    for (index_count=0;index_count<setlength;index_count++)
     {
-	for(sort_count=0;sort_count<length;sort_count++)
+	for(sort_count=0;sort_count<setlength;sort_count++)
 	{
 	   if(numberset[index_count]>numberset[sort_count])
 	    {
