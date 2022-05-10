@@ -1,33 +1,26 @@
 #include "stats.h"
 
 struct Stats compute_statistics(const float* numberset, int setlength) {
-    struct Stats s;
-    s.average = 0;
-    s.min = 0;
-    s.max = 0;
-    int index_count=0,sort_count=0;
-    float sum=0,temp_number=0;
-    /*sorting the array*/
-    for (index_count=0;index_count<setlength;index_count++)
+    struct Stats set;
+    set.average = 0;
+    set.min = numberset[0];
+    set.max = 0;
+    int index_count=0;
+    float sum=0.0;
+    for (;index_count<setlength;index_count++)
     {
-	for(sort_count=0;sort_count<setlength;sort_count++)
+        if(numberset[index_count]<set.min)
 	{
-	   if(numberset[index_count]>numberset[sort_count])
-	    {
-		temp_number = numberset[index_count];
-		numberset[index_count]= numberset[sort_count];
-		numberset[sort_count]=temp_number;
-	    }
+		set.min=numberset[index_count];
 	}
+	if(numberset[index_count]>set.max)
+	{
+		set.max=numberset[index_count];
+	}    
 	sum+=numberset[index_count];
      }
-    /*average*/
-    s.average=(sum/setlength);
-    /*minimum*/
-    s.min=numberset[0];
-    /*maximum*/
-    s.max=numberset[setlength-1];
-    return s;
+    set.average=(sum/setlength);
+    return set;
 }
 
 int emailAlertCallCount = 0;
