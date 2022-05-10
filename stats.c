@@ -26,7 +26,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     set.average=(sum/setlength);
     return set;
 }
-void check_and_alert(float maxThreshold, alerter_funcptr alerters[], Stats computedStats)
+void check_and_alert(float maxThreshold, alerter_funcptr alerters[],struct Stats computedStats)
 {
    if(computedStatus.max>maxThreshold)
    {
